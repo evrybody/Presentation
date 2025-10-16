@@ -1,0 +1,236 @@
+.itemGridContainer {
+  position: relative;
+  width: calc(90vw - var(--sidebar-closed-width));
+  transition: all 0.3s ease-in-out;
+}
+
+.itemGridContainer--unshifted {
+  width: calc(92vw - var(--sidebar-open-width));
+}
+
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+/* Карточка игры */
+.gameCard {
+  position: relative;
+  height: 240px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 0;
+}
+
+.gameCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Блок описания */
+.gameDescriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #7e0b0b, #360000);
+  border: 1px solid var(--yellow);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  transition: all 0.25s ease;
+  z-index: 1;
+}
+
+.gameDescriptionWrapper a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.gameDescription span {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.gameCard:hover .gameDescription span {
+  -webkit-line-clamp: 3;
+}
+
+/* Demo при ховере */
+.gameDemo {
+  display: none;
+  font-size: 14px;
+}
+
+.gameDemo span {
+  color: var(--green);
+  transition: color 0.2s ease;
+}
+
+.gameDemo span:hover {
+  color: var(--yellow);
+}
+
+.gameCard:hover .gameDemo {
+  display: block;
+}
+
+/* Load More */
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.loadMoreButton {
+  color: white;
+  background: none;
+  border: 1px solid var(--yellow, #f0cb6c);
+  border-radius: 8px;
+  padding: 12px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.loadMoreButton:hover {
+  color: var(--green);
+  background: linear-gradient(135deg, #f0cb6c, #382a06);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(126, 11, 11, 0.4);
+}
+
+.loadMoreButton:active {
+  transform: translateY(0);
+}
+
+.skeleton {
+  position: relative;
+  height: 240px;
+  border-radius: 8px;
+  /* background-color: #2e2e2e; */
+  animation: pulse 1.5s infinite ease-in-out;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.skeleton .gameDescriptionWrapper {
+  background: linear-gradient(to bottom, #3a3a3a, #1a1a1a);
+  border: 1px solid #555;
+  padding: 0.4rem;
+}
+
+.skeletonText {
+  background-color: #444;
+  border-radius: 4px;
+  height: 16px;
+  width: 60%;
+  margin: 3px 0;
+}
+
+.skeletonText:last-child {
+  width: 40%;
+}
+
+.providerCard {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid var(--yellow, #f0cb6c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 160px;
+  height: 60px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  /* padding: .5rem; */
+}
+
+.providerCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(240, 203, 108, 0.4);
+}
+
+.itemCardBackground {
+  max-width: 80%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+/* 📱 Адаптив */
+@media (max-width: 1400px) {
+  .itemGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .itemGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .itemGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .gameCard,
+  .skeleton {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .itemGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gameCard,
+  .skeleton {
+    height: 200px;
+  }
+  .loadMoreButton {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .itemGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gameCard,
+  .skeleton {
+    height: 180px;
+  }
+}

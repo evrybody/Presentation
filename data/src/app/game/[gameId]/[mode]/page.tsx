@@ -1,0 +1,198 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+import { GameItem } from "@/types/gameItem";
+import { useSidebar } from "@/features/Sidebar/SidebarContext";
+import { getGameById } from "@/features/games/AllGamesData";
+
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "@/services/Games/favoriteGame";
+
+import useAuthStore from "@/store/Auth/authStore";
+import { useRecentlyStore } from "@/store/Games/recentlyStore";
+
+import Loading from "@/app/loading";
+
+import "./page.css";
+
+type GameMode = "real" | "demo";
+
+const ActiveSlot = (/* to do url: string */) => {
+  const params = useParams();
+  const gameId = params.gameId as string;
+  const mode = params.mode as GameMode;
+  const router = useRouter();
+  const { isOpen } = useSidebar();
+
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false); //to do  check favorites from api
+  const [gameData, setGameData] = useState<GameItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!gameId || !mode) {
+      setError("Invalid game parameters");
+      setLoading(false);
+      return;
+    }
+
+    if (!isAuthenticated && mode === "real") {
+      router.replace(`/game/${gameId}/demo`);
+      return;
+    }
+
+    const gameData = getGameById(gameId);
+    if (gameData) {
+      setGameData(gameData);
+      useRecentlyStore.getState().addGame(gameData);
+    } else setError("Game not found");
+
+    setLoading(false);
+  }, [gameId, mode]);
+
+  const toggleFullscreen = () => setIsFullscreen(!isFullscreen);
+
+  const handleFavoriteToggle = async () => {
+    if (!gameData) return;
+
+    if (isFavorite) {
+      const success = await removeFromFavorites(gameData.id);
+      if (success) setIsFavorite(false);
+    } else {
+      const success = await addToFavorites(gameData.id);
+      if (success) setIsFavorite(true);
+    }
+  };
+
+  const toggleMode = () => {
+    const newMode: GameMode = mode === "real" ? "demo" : "real";
+    if (isAuthenticated) router.push(`/game/${gameId}/${newMode}`);
+  };
+
+  if (loading) return <Loading />;
+
+  if (error || !gameData) {
+    //to do styles
+    return (
+      <main className={`container ${isOpen ? "container--unshifted" : ""}`}>
+        <section className="error-container">
+          <h2>Error</h2>
+          <p>{error || "Game not found"}</p>
+          <button onClick={() => router.push("/slots")}>Back to Slots</button>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main className={`container ${isOpen ? "container--unshifted" : ""}`}>
+      <article className="active-slot">
+        <section
+          className={`iframe-container ${isFullscreen ? "fullscreen" : ""}`}
+        >
+          <iframe
+            src="about:blank"
+            // width="1776"
+            // height="1000"
+            className="slot-iframe"
+          />
+
+          {isFullscreen && (
+            <button
+              className="exit-fullscreen-btn"
+              onClick={toggleFullscreen}
+              title="Exit Fullscreen"
+            >
+              ✕
+            </button>
+          )}
+        </section>
+
+        <footer className="button-container">
+          <div className="control-buttons">
+            <button
+              className="fullscreen-btn"
+              onClick={toggleFullscreen}
+              title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+            >
+              {isFullscreen ? (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M8 3V5H4V9H2V3H8ZM2 15V21H8V19H4V15H2ZM22 9V3H16V5H20V9H22ZM20 19H16V21H22V15H20V19Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              ) : (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 14H5V19H10V17H7V14ZM5 10H7V7H10V5H5V10ZM17 17H14V19H19V14H17V17ZM14 5V7H17V10H19V5H14Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+            </button>
+
+            <button
+              className="favorite-btn"
+              onClick={handleFavoriteToggle}
+              title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+            >
+              {isFavorite ? (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 512 490"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256.008 116.896L280.76 162.976C294.696 188.712 319.264 207.176 348.416 212.584L349.008 212.68L400.408 221.848L364.368 259.608C346.908 277.567 337.158 301.64 337.2 326.688C337.2 331.392 337.531 336.011 338.192 340.544L338.128 340.032L345.168 391.656L300.8 370.336C287.72 363.872 272.296 360.08 256.008 360.08C239.72 360.08 224.296 363.856 210.608 370.592L211.208 370.32L166.848 391.648L173.888 340.024C174.48 336.024 174.816 331.384 174.816 326.68C174.864 301.616 165.108 277.527 147.632 259.56L147.664 259.6L111.624 220.768L163.024 211.6C177.316 209.002 190.844 203.234 202.613 194.72C214.382 186.205 224.093 175.161 231.032 162.4L231.288 161.896L256.04 116.888L256.008 116.896ZM256.008 0H255.96C245.4 0 236.232 5.888 231.544 14.576L231.464 14.72L170.672 129.056C168.685 132.724 165.909 135.907 162.545 138.375C159.181 140.842 155.312 142.534 151.216 143.328L151.04 143.36L23.056 166.4C16.6132 167.514 10.7695 170.864 6.55255 175.861C2.3356 180.858 0.0154127 187.182 0 193.72C0 201.16 2.928 207.912 7.696 212.904L7.68 212.896L97.48 306.536C100.553 309.617 102.835 313.396 104.131 317.55C105.426 321.704 105.697 326.11 104.92 330.392L104.952 330.232L87.464 458.216C86.9148 462.143 87.2144 466.142 88.3424 469.944C89.4704 473.745 91.4007 477.261 94.0029 480.253C96.6052 483.245 99.8189 485.644 103.427 487.288C107.036 488.932 110.955 489.783 114.92 489.784H114.984C119.561 489.941 124.098 488.887 128.136 486.728L127.992 486.792L242.104 431.752C246.719 429.493 251.791 428.326 256.929 428.34C262.067 428.354 267.133 429.549 271.736 431.832L271.544 431.752L383.968 486.792C387.657 488.771 391.782 489.799 395.968 489.784H396.136H396.12C396.397 489.8 396.701 489.805 397.032 489.8C401.012 489.8 404.944 488.944 408.564 487.289C412.183 485.635 415.403 483.22 418.007 480.21C420.61 477.2 422.535 473.665 423.65 469.845C424.766 466.025 425.046 462.01 424.472 458.072L424.488 458.216L407 330.232C406.362 326.075 406.706 321.826 408.003 317.826C409.3 313.825 411.516 310.183 414.472 307.192L504.272 213.552C507.736 209.939 510.158 205.455 511.281 200.577C512.404 195.699 512.187 190.608 510.652 185.844C509.117 181.079 506.321 176.819 502.561 173.514C498.802 170.209 494.218 167.983 489.296 167.072L489.12 167.048L361.136 144.008C356.94 143.202 352.981 141.454 349.558 138.896C346.135 136.338 343.338 133.036 341.376 129.24L341.296 129.08L280.496 14.744C278.132 10.3011 274.605 6.58448 270.291 3.99166C265.978 1.39884 261.041 0.0273823 256.008 0.0240002H255.96L256.008 0Z"
+                    fill="#FFD700"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 512 490"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256.008 116.896L280.76 162.976C294.696 188.712 319.264 207.176 348.416 212.584L349.008 212.68L400.408 221.848L364.368 259.608C346.908 277.567 337.158 301.64 337.2 326.688C337.2 331.392 337.531 336.011 338.192 340.544L338.128 340.032L345.168 391.656L300.8 370.336C287.72 363.872 272.296 360.08 256.008 360.08C239.72 360.08 224.296 363.856 210.608 370.592L211.208 370.32L166.848 391.648L173.888 340.024C174.48 336.024 174.816 331.384 174.816 326.68C174.864 301.616 165.108 277.527 147.632 259.56L147.664 259.6L111.624 220.768L163.024 211.6C177.316 209.002 190.844 203.234 202.613 194.72C214.382 186.205 224.093 175.161 231.032 162.4L231.288 161.896L256.04 116.888L256.008 116.896ZM256.008 0H255.96C245.4 0 236.232 5.888 231.544 14.576L231.464 14.72L170.672 129.056C168.685 132.724 165.909 135.907 162.545 138.375C159.181 140.842 155.312 142.534 151.216 143.328L151.04 143.36L23.056 166.4C16.6132 167.514 10.7695 170.864 6.55255 175.861C2.3356 180.858 0.0154127 187.182 0 193.72C0 201.16 2.928 207.912 7.696 212.904L7.68 212.896L97.48 306.536C100.553 309.617 102.835 313.396 104.131 317.55C105.426 321.704 105.697 326.11 104.92 330.392L104.952 330.232L87.464 458.216C86.9148 462.143 87.2144 466.142 88.3424 469.944C89.4704 473.745 91.4007 477.261 94.0029 480.253C96.6052 483.245 99.8189 485.644 103.427 487.288C107.036 488.932 110.955 489.783 114.92 489.784H114.984C119.561 489.941 124.098 488.887 128.136 486.728L127.992 486.792L242.104 431.752C246.719 429.493 251.791 428.326 256.929 428.34C262.067 428.354 267.133 429.549 271.736 431.832L271.544 431.752L383.968 486.792C387.657 488.771 391.782 489.799 395.968 489.784H396.136H396.12C396.397 489.8 396.701 489.805 397.032 489.8C401.012 489.8 404.944 488.944 408.564 487.289C412.183 485.635 415.403 483.22 418.007 480.21C420.61 477.2 422.535 473.665 423.65 469.845C424.766 466.025 425.046 462.01 424.472 458.072L424.488 458.216L407 330.232C406.362 326.075 406.706 321.826 408.003 317.826C409.3 313.825 411.516 310.183 414.472 307.192L504.272 213.552C507.736 209.939 510.158 205.455 511.281 200.577C512.404 195.699 512.187 190.608 510.652 185.844C509.117 181.079 506.321 176.819 502.561 173.514C498.802 170.209 494.218 167.983 489.296 167.072L489.12 167.048L361.136 144.008C356.94 143.202 352.981 141.454 349.558 138.896C346.135 136.338 343.338 133.036 341.376 129.24L341.296 129.08L280.496 14.744C278.132 10.3011 274.605 6.58448 270.291 3.99166C265.978 1.39884 261.041 0.0273823 256.008 0.0240002H255.96L256.008 0Z"
+                    fill="#7B7B7B"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+          {isAuthenticated && (
+            <div className="toggle-switch" onClick={toggleMode}>
+              <input
+                type="checkbox"
+                id="mode-toggle"
+                checked={mode === "real"}
+                readOnly
+              />
+              <label htmlFor="mode-toggle">
+                <span className="switch-handle"></span>
+              </label>
+              <span className="toggle-label">
+                {mode === "real" ? "Real money" : "Fun play"}
+              </span>
+            </div>
+          )}
+        </footer>
+      </article>
+    </main>
+  );
+};
+
+export default ActiveSlot;

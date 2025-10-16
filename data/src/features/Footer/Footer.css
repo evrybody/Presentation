@@ -1,0 +1,229 @@
+.Footer {
+  color: white;
+  padding-left: var(--sidebar-closed-width);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.Footer--unshifted {
+  padding-left: var(--sidebar-open-width);
+}
+
+.FooterContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.FooterContent h3 {
+  margin-bottom: 10px;
+}
+
+.FooterSection {
+  flex: 1 1 250px;
+  margin: 10px;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.Contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.SocialIcons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.LogoPartnership {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AffiliateButton {
+  background-color: #c7ba7e;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.AffiliateButton:hover {
+  background-color: #e0c78c;
+}
+
+.Rules ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Rules ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.Rules ul li a:hover {
+  text-decoration: underline;
+}
+
+.BottomCaption {
+  text-align: center;
+  margin-top: 20px;
+  color: #c7ba7e;
+}
+
+@media (max-width: 1024px) {
+  .FooterContent {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .FooterSection {
+    flex: 1 1 200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .FooterContent {
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .FooterSection {
+    flex: 1 1 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .FooterContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    padding-bottom: 20px;
+    margin-inline: 2rem;
+  }
+
+  .FooterContent > .Rules {
+    grid-column: 1;
+  }
+
+  .FooterContent > :not(.Rules) {
+    grid-column: 2;
+  }
+
+  .FooterSection {
+    margin: 0;
+    min-width: 0;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .LogoPartnership {
+    position: static;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Rules,
+  .Contact,
+  .SocialMedia {
+    align-items: flex-start;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .FooterLogo {
+    width: 160px;
+  }
+
+  .BottomCaption {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .FooterContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+    padding-bottom: 16px;
+  }
+
+  .FooterContent > .Rules {
+    grid-column: 1;
+  }
+
+  .FooterContent > :not(.Rules) {
+    grid-column: 2;
+  }
+
+  .FooterSection {
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .FooterLogo {
+    width: 140px;
+  }
+
+  .AffiliateButton {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .SocialIcons {
+    gap: 12px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .BottomCaption {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .FooterContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .FooterLogo {
+    width: 120px;
+  }
+
+  .AffiliateButton {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .BottomCaption {
+    padding-bottom: 4rem;
+  }
+}

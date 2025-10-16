@@ -1,0 +1,259 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: 2.7rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --green-hex: #03322b;
+    --green-alpha-200: rgba(var(--green-hex), 0.145);
+    --green-alpha-100: rgba(var(--green-hex), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.main {
+  margin-top: 1.3rem;
+  margin-left: var(--sidebar-closed-width);
+  transition: margin-left 0.2s ease-in-out;
+}
+
+.shifted {
+  margin-left: var(--sidebar-open-width);
+}
+
+.main ol {
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  list-style-position: inside;
+}
+
+.main code {
+  background: var(--green-hex);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.meeting_section {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "left center right";
+  gap: 1rem;
+  width: 90%;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.l_meeting {
+  grid-area: left;
+}
+.meeting {
+  grid-area: center;
+}
+.r_meeting {
+  grid-area: right;
+}
+
+.l_meeting,
+.r_meeting {
+  position: relative;
+  border: 1px solid var(--yellow);
+  border-radius: var(--border-radius);
+  background-color: #011d19;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meeting {
+  flex: 2;
+  border: 1px solid var(--yellow);
+  border-radius: var(--border-radius);
+  background-color: #022721;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 16 / 7;
+  min-height: 300px;
+}
+
+.navigation {
+  margin-top: 1rem;
+}
+
+.slots {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  padding-block: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+}
+
+.ctas a {
+  appearance: none;
+  border-radius: 128px;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+a.primary {
+  background: var(--foreground);
+  color: var(--background);
+  gap: 8px;
+}
+
+a.secondary {
+  border-color: var(--gray-alpha-200);
+  min-width: 180px;
+}
+
+.footer {
+  display: flex;
+  gap: 24px;
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50svh;
+  text-align: center;
+}
+
+/* Hover effects */
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+  }
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .meeting_section {
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    gap: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .meeting {
+    grid-column: 2;
+    min-height: 240px;
+    aspect-ratio: auto;
+  }
+
+  .l_meeting,
+  .r_meeting {
+    min-height: 240px;
+    aspect-ratio: auto;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .meeting_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "center center"
+      "left   right";
+    width: 100%;
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+    font-size: 14px;
+  }
+
+  .meeting { grid-area: center; }
+  .l_meeting { grid-area: left; }
+  .r_meeting { grid-area: right; }
+
+  .meeting {
+    min-height: 200px;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .l_meeting,
+  .r_meeting {
+    min-height: 160px;
+    aspect-ratio: auto;
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+}
+
+/* Loader */
+.sectionLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+  color: var(--yellow);
+}
+
+.loaderSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(254, 210, 83, 0.3);
+  border-top: 3px solid var(--yellow);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sectionLoader p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}

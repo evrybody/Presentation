@@ -1,0 +1,66 @@
+"use client";
+
+import React from "react";
+import styles from "../features/loading/loading.module.css";
+
+function Loading() {
+  return (
+    <div className={styles.preloader}>
+      <div className={styles.logoSpinner}>
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 274 270"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className={styles.svgLogo}
+        >
+          <g clipPath="url(#clip0_1262_17)">
+            <circle cx="137" cy="135" r="135" fill="#FFD63D" />
+            <g filter="url(#filter0_d_1262_17)">
+              <circle cx="137" cy="135" r="107" fill="black" />
+            </g>
+            <g clipPath="url(#clip1_1262_17)">
+              <path d="M61.3406 59.3401C71.2764 49.4042 83.072 41.5227 96.0539 36.1454L137.001 135.001L61.3406 59.3401Z" fill="#D40B02" />
+              <path d="M61.3401 210.661C51.4042 200.725 43.5227 188.929 38.1454 175.948L137.001 135L61.3401 210.661Z" fill="#D40B02" />
+              <path d="M137 28.0005C151.051 28.0005 164.965 30.7681 177.947 36.1454L137 135L137 28.0005Z" fill="#D40B02" />
+              <path d="M30 135C30 120.949 32.7676 107.035 38.1449 94.0534L137 135L30 135Z" fill="#D40B02" />
+              <path d="M244 135.001C244 149.052 241.232 162.966 235.855 175.948L137 135L244 135.001Z" fill="#14D402" />
+              <path d="M137 242C122.949 242 109.035 239.233 96.0529 233.856L137 135L137 242Z" fill="#D40B02" />
+              <path d="M212.661 59.3401C222.597 69.2759 230.478 81.0715 235.856 94.0534L137 135L212.661 59.3401Z" fill="#D40B02" />
+              <path d="M212.66 210.661C202.725 220.597 190.929 228.478 177.947 233.856L137 135L212.66 210.661Z" fill="#D40B02" />
+            </g>
+            <circle cx="137" cy="135" r="60" fill="#F37324" />
+            <rect x="100" y="162" width="90.5097" height="14.8492" transform="rotate(-45 100 162)" fill="#FBBD57" />
+            <rect x="110.5" y="98.0005" width="90.5097" height="14.8492" transform="rotate(45 110.5 98.0005)" fill="#FBBD57" />
+            <circle cx="137.5" cy="135.5" r="22.5" fill="#FFD63D" />
+          </g>
+          <defs>
+            <filter id="filter0_d_1262_17" x="26" y="28.0005" width="222" height="222" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1262_17" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1262_17" result="shape" />
+            </filter>
+            <clipPath id="clip0_1262_17">
+              <rect width="274" height="270" fill="white" />
+            </clipPath>
+            <clipPath id="clip1_1262_17">
+              <rect width="302.642" height="302.642" fill="white" transform="translate(-77 135) rotate(-45)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div className={styles.loadingText}>Loading...</div>
+    </div>
+  );
+}
+
+export default Loading;

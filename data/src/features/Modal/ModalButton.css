@@ -1,0 +1,56 @@
+.modal-button {
+  font-family: Chonburi;
+  transition: all 0.2s ease-in-out;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  transform: translateY(-0.5dvh);
+}
+
+.modal-button.login {
+  background: none;
+  border: 1px solid #fed253;
+  border-radius: var(--border-radius);
+  color: #fed253;
+  margin-right: 1rem;
+}
+
+
+.modal-button.register {
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  background-size: 300%;
+  border: none;
+  border-radius: var(--border-radius);
+  color: #02312a;
+  font-weight: bold;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+}
+
+.modal-button.paymentModal {
+  font-size: 14px;
+  background: linear-gradient(90deg, #FF2A2A 15%, #cf163e 50%, #FF2A2A 75%);
+  background-size: 300%;
+  border: none;
+  border-radius: var(--border-radius);
+  color: #FFF;
+  font-weight: bold;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+  padding: 0.7rem 2rem;
+}
+
+/* Анимация градиента */
+@keyframes gradientFlow {
+  0% {
+    background-position: 10;
+  }
+
+  100% {
+    background-position: 0%;
+
+  }
+}

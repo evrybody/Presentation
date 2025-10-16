@@ -1,0 +1,19 @@
+.section-caption {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: var(--border-radius);
+  background-color: #5c0606;
+  padding-inline: 1rem;
+  max-width: max-content;
+}
+
+.section-description {
+  text-align: center;
+  margin-block: 2.5rem;
+  color: var(--yellow);
+  /* max-width: 800px; */
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18;
+}

@@ -1,0 +1,51 @@
+.slot_page_wrapper {
+  display: grid;  transition: margin-left 0.2s ease-in-out;
+  margin-left: var(--sidebar-closed-width);
+  gap: 1rem;
+}
+
+.slot_page_wrapper--unshifted {
+  transition: all 0.2s ease-in-out;
+  margin-left: var(--sidebar-open-width);
+}
+
+.page_content {
+  position: relative;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.sectionLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+}
+
+.logoSpinner {
+  animation: spin 2s linear infinite;
+  width: 60px;
+  height: 60px;
+}
+
+.svgLogo {
+  width: 100%;
+  height: 100%;
+}
+
+.loadingText {
+  margin: 0;
+  font-size: 14px;
+  color: var(--yellow);
+  opacity: 0.9;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,165 @@
+/* Основной контейнер */
+.profile-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  margin-left: var(--sidebar-closed-width);
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.profile-container--unshifted {
+  width: calc(100vw - var(--sidebar-open-width));
+  margin-left: var(--sidebar-open-width);
+}
+
+/* Карточка профиля */
+.btn-container {
+  position: relative;
+  background-color: var(--secondary-color);
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+  transition: all 0.3s ease-out;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.profile-header {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--header-bg-color);
+  border-radius: 7px 7px 0 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile__login {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Контент профиля */
+.profile-content {
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Блок со статистикой */
+.amounts-container {
+  background-color: transparent;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.amounts-container h3 {
+  margin-bottom: 1rem;
+}
+
+.amounts-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+
+.amounts-container li {
+  background-color: var(--content-bg-color);
+  border-radius: 7px;
+  flex: 1 1 calc(50% - 1rem);
+  min-width: 150px;
+  height: 5rem;
+  position: relative;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.amounts-container li div {
+  background-color: var(--amount-detail-bg-color);
+  border-radius: 0 0 7px 7px;
+  position: absolute;
+  padding: 0.5rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  font-size: 0.875rem;
+}
+
+/* Разделы (игры и т.д.) */
+.profile-sections {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.last-games,
+.favourite-games {
+  background-color: var(--content-bg-color);
+  border-radius: 7px;
+}
+
+.last-games,
+.favourite-games p {
+  padding: 2.5rem;
+}
+
+/* Адаптивы */
+@media (max-width: 1024px) {
+  .amounts-container ul {
+    gap: 1rem;
+  }
+
+  .amounts-container li {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .amounts-container li {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-header,
+  .profile-content {
+    padding: 1rem;
+  }
+
+  .profile__login {
+    font-size: 1.25rem;
+  }
+
+  .amounts-container li div {
+    font-size: 0.75rem;
+  }
+
+  .section h3 {
+    font-size: 1rem;
+  }
+}

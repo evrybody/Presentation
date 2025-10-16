@@ -1,0 +1,33 @@
+.preloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.logoSpinner {
+  animation: spin 2s linear infinite;
+  width: 100px;
+  height: 100px;
+}
+
+.svgLogo {
+  width: 100%;
+  height: 100%;
+}
+
+.loadingText {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

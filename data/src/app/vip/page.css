@@ -1,0 +1,134 @@
+.vip-club {
+  position: relative;
+  width: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.vip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.vip-card {
+  border-radius: var(--border-radius);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #05483e;
+  color: var(--yellow);
+}
+
+.vip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.vip-card-header {
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  color: var(--green);
+  padding: 0.5rem;
+  background-size: 300%;
+  text-align: center;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.vip-card-header h2 {
+  margin: 0;
+  color: var(--green);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.vip-card-content {
+  padding: 1.5rem;
+}
+
+.vip-card-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vip-card-content li {
+  padding: 0.5rem 0;
+  /* border-bottom: 1px solid #eee; */
+  display: flex;
+  align-items: center;
+}
+
+.vip-card-content li:before {
+  content: "✓";
+  color: #2575fc;
+  margin-right: 0.5rem;
+}
+
+.vip-card-footer {
+  position: relative;
+  bottom: 0;
+  padding: 1.2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.vip-btn {
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.vip-details-button:hover {
+  background-color: #1a5dc8;
+}
+
+@media (max-width: 1200px) {
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .vip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  .vip-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+  .vip-tables-container {
+    grid-template-columns: 1fr;
+  }
+
+  .vip-club-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+}

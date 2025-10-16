@@ -1,0 +1,157 @@
+.payment__wrapper {
+    position: relative;
+    background-color: pink;
+    margin-left: var(--sidebar-closed-width);
+    margin-top: 4rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.payment__wrapper--unshifted {
+    margin-left: var(--sidebar-open-width)
+}
+
+.paymentWindow {
+    position: relative;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-block: 1rem;
+    background-color: #05483e;
+    border-radius: var(--border-radius);
+    color: #f0cb6c;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tabButtons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.paymentButton {
+    padding: 2dvh 4dvw;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0cb6c;
+}
+
+.paymentButton.active {
+    background: #04221d;
+    border-radius: var(--border-radius);
+}
+
+.currencySelect {
+    margin: 1rem 0;
+}
+
+.currencySelect .active {
+    background: #04221d;
+    border-radius: var(--border-radius);
+}
+
+.currencyButton {
+    padding: 1dvh 2dvw;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0cb6c;
+}
+
+.currencyButton.activeCurrency {
+    background: #05483e;
+    border-radius: var(--border-radius);
+}
+
+.selectMethod {
+    padding: 1dvh 2dvw;
+    cursor: pointer;
+    border: 1px solid #f0cb6c;
+    border-radius: var(--border-radius);
+    margin: 1rem;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0cb6c;
+}
+
+.paymentsMethod {
+    margin: 1rem;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0cb6c;
+}
+
+.methodList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.methodButton {
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    background: #04221d;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0cb6c;
+    margin: 1rem;
+}
+
+.methodButton.activeMethod {
+    border: 1px solid #ffcf43;
+    border-radius: var(--border-radius);
+}
+
+.deposit {
+    padding: 1rem;
+    color: #f0cb6c;
+}
+
+.withdrawal {
+    padding: 1rem;
+    color: #f0cb6c;
+}
+
+.history {
+    padding: 1rem;
+    color: #f0cb6c;
+}
+
+.Deposit {
+    background: linear-gradient(90deg, #f0cb6c 15%, #f2e5c2 50%, #f0cb6c 75%);
+    background-size: 300%;
+    animation: gradientFlow 5s ease-in-out infinite;
+    border: none;
+    color: #05483e;
+    padding: 0.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.Deposit:hover {
+    transform: scale(1.05);
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

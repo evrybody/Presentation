@@ -1,0 +1,156 @@
+.nav {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
+  /* max-width: 800px; */
+  background-color: #03312a;
+  padding-block: 10px;
+  border-radius: var(--border-radius, 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav li {
+  list-style: none;
+  position: relative;
+  padding-inline: 0.5rem;
+  /* height: 100%; */
+}
+
+.nav li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 75%;
+  background-color: #f0cb6c;
+}
+
+.nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  min-width: 40px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: #f0cb6c;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  gap: 5px;
+}
+
+.nav button:hover {
+  background-color: #c8a857;
+  opacity: 1;
+}
+
+.nav button.active {
+  background-color: #f0cb6c;
+  color: #03312a;
+  width: max-content;
+  opacity: 1;
+}
+
+
+@media (max-width: 1024px) {
+  .nav {
+    max-width: 80%;
+    padding: 8px 15px;
+    border-radius: 25px;
+  }
+
+  .nav__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav li {
+    padding-inline: 0.3rem;
+  }
+
+  .nav li:not(:last-child)::after {
+    height: 20px;
+  }
+
+  .nav button {
+    padding: 8px;
+    min-width: 35px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    max-width: 95%;
+    padding: 6px 10px;
+    border-radius: 20px;
+  }
+
+  .nav__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav li {
+    padding-inline: 0.2rem;
+  }
+
+  .nav li:not(:last-child)::after {
+    height: 15px;
+  }
+
+  .nav button {
+    padding: 6px;
+    min-width: 28px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding: 5px 8px;
+  }
+
+  .nav__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav li {
+    padding-inline: 0.1rem;
+  }
+
+  .nav li:not(:last-child)::after {
+    height: 12px;
+  }
+
+  .nav button {
+    padding: 5px;
+    min-width: 24px;
+    font-size: 11px;
+  }
+}

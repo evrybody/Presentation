@@ -1,0 +1,376 @@
+/* Контейнер */
+.profileContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: var(--sidebar-closed-width);
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  padding: 2rem;
+  box-sizing: border-box;
+  margin-top: 3rem;
+  font-weight: bold;
+}
+
+.profileContainer--unshifted {
+  width: calc(100vw - var(--sidebar-open-width));
+  margin-left: var(--sidebar-open-width);
+}
+
+/* Карточка */
+.profileCard {
+  background-color: var(--secondary-color);
+  width: 90%;
+  margin: 0 auto;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Хедер */
+.profileHeader {
+  background-color: var(--header-bg-color);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileLogin {
+  font-size: 1.5rem;
+}
+
+.verifiedLabel {
+  font-size: 0.875rem;
+  color: var(--primary-color);
+}
+
+.logoutBtn {
+  background-color: #6b7280;
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.logoutBtn:hover {
+  background-color: #4b5563;
+}
+
+/* Контент */
+.profileContent {
+  padding: 2rem;
+  background-color: var(--content-bg-color);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-color);
+  padding: 0.5rem 0.75rem;
+  color: var(--primary-color);
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Кнопки */
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.saveBtn {
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  background-size: 300%;
+  border: none;
+  border-radius: var(--border-radius);
+  color: #02312a;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  animation: gradientFlow 5s linear infinite;
+  transition: transform 0.3s;
+}
+
+.saveBtn:hover {
+  transform: translateY(-0.25rem);
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+.profileContentWrapper {
+  display: flex;
+
+  min-height: 400px;
+}
+
+/* Левое меню */
+.sidebar {
+  min-width: 200px;
+  background-color: var(--header-bg-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menuItem {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: background 0.2s;
+  width: 200;
+  font-weight: bold;
+}
+
+.menuItem:hover {
+  background-color: var(--secondary-color);
+}
+
+.active {
+  background-color: var(--content-bg-color);
+}
+
+/* Правый контент */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--content-bg-color);
+}
+
+.verifyContainer {
+  gap: 1rem;
+}
+
+.verifyContainer p {
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.verifyInput {
+  width: 200px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.verifyInput:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+  border: none;
+  color: var(--primary-color);
+}
+
+.verifyInput::placeholder {
+  color: rgba(240, 203, 108, 0.6);
+}
+.verifyInput::-webkit-input-placeholder {
+  color: rgba(240, 203, 108, 0.6);
+}
+.verifyInput::-moz-placeholder {
+  color: rgba(240, 203, 108, 0.6);
+}
+.verifyInput:-ms-input-placeholder {
+  color: rgba(240, 203, 108, 0.6);
+}
+
+.twofactorBtn {
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  background-size: 300%;
+  border: none;
+  border-radius: var(--border-radius);
+  color: #02312a;
+  font-weight: bold;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.3s;
+}
+
+.twofactorBtn:hover {
+  transform: translateY(-0.5dvh);
+}
+
+.verifiedLabel {
+  color: var(--primary-color);
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+.securityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #02231d;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+}
+
+.passwordGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  /* padding: 10px 14px; */
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  width: 50%;
+}
+
+.actionBtn {
+  background: #02312a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.actionBtn:disabled {
+  background: #5e2727;
+  cursor: not-allowed;
+}
+
+.actionBtn:hover:not(:disabled) {
+  background: #035347;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .profileContainer {
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+
+  .profileCard {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menuItem {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .profileContentWrapper {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  /* Формы */
+  .form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .passwordGroup {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .actionBtn,
+  .twofactorBtn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .verifyInput {
+    width: 100%;
+  }
+
+  .verifyContainer p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}

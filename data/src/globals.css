@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #022e27;
+  /* background-color: #0E1E17; */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #064b40 rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --green: #05483e;
+  --yellow: #fed253;
+  --sidebar-open-width: 250px;
+  --sidebar-closed-width: 60px;
+  --border-radius: 7px;
+  --primary-color: #f0cb6c;
+  --secondary-color: #05483e;
+  --header-bg-color: #01241f;
+  --amount-detail-bg-color: #04332c;
+  --content-bg-color: #021f1a;
+}
+
+.gold-gradient {
+  display: inline-block;
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+}
+
+.container {
+  width: 100%;
+  margin-left: var(--sidebar-closed-width);
+  margin-top: 5rem;
+  transition: all 0.3s ease;
+}
+
+.container--unshifted {
+  margin-left: var(--sidebar-open-width);
+  width: calc(100% - var(--sidebar-open-width));
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-gradient {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-open-width: 0;
+    --sidebar-closed-width: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}

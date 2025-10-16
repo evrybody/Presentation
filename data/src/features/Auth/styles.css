@@ -1,0 +1,248 @@
+/* Основные стили для модального окна логина */
+.form {
+  display: flex;
+  width: 800px;
+  height: auto;
+  background: linear-gradient(90deg, #067a6b, #04443b);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+/* Стили для промо-секции (левая часть) */
+.promo__wrapper {
+  width: 50%;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo {
+  color: #04443b;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Стили для секции логина (правая часть) */
+.form__wrapper {
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form__wrapper h3 {
+  position: relative;
+  width: max-content;
+  left: 50%;
+  margin-bottom: 1rem;
+  transform: translateX(-50%);
+}
+
+/* Заголовок формы */
+.main-label {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f1dead;
+  margin-bottom: 30px;
+  padding: 0;
+  text-align: center;
+  cursor: default;
+  font-family: chonburi;
+}
+
+/* Стили для полей ввода */
+.form-item {
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #087263;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  font-family: Chonburi;
+  background-color: #04443b;
+  color: #f0cb6c;
+}
+
+.form-item input:focus {
+  outline: none;
+  border-color: #f0cb6c;
+  color: var(--yellow);
+}
+
+.form-item input.input-error {
+  border-color: #ff6b6b;
+}
+
+.form-item select {
+  background: #04221d;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 12px 15px;
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.form-button {
+  background: linear-gradient(90deg, #c49f44 15%, #f2e5c2 50%, #c49f44 75%);
+  background-size: 300%;
+  border: none;
+  font-family: Chonburi;
+  border-radius: var(--border-radius);
+  color: #02312a;
+  font-weight: bold;
+  animation: gradientFlow 5s linear infinite;
+  will-change: background-position;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-button:hover {
+  opacity: 0.8;
+}
+
+.form-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.form--complete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40dvh;
+  min-width: 25dvw;
+  background: linear-gradient(145deg, #04443b, #03201b);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.form--complete h3 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.form-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 25dvh;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.form-item span {
+  color: var(--yellow);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.or ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.or li {
+  width: max-content;
+}
+
+@media (max-width: 1200px) {
+  .form {
+    width: 700px;
+  }
+
+  .promo__wrapper {
+    width: 100%;
+    height: 100px;
+  }
+
+  .form__wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .form {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .promo__wrapper {
+    width: 100%;
+    height: 200px;
+  }
+
+  .form__wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .promo__wrapper {
+    width: 100%;
+    height: 150px;
+  }
+
+  .form__wrapper {
+    width: 100%;
+  }
+
+  .modal-button.register {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-button.login,
+  .modal-button.register {
+    margin-right: 0;
+  }
+}
+
+/* Анимация градиента */
+@keyframes gradientFlow {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}

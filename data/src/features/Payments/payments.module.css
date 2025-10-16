@@ -1,0 +1,289 @@
+.paymentWindow {
+  padding: 1rem;
+  background-color: #05483e;
+  border-radius: var(--border-radius);
+  color: #f0cb6c;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tabButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.paymentButton {
+  padding: 2dvh 4dvw;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0cb6c;
+}
+
+.paymentButton.active {
+  background: #04221d;
+  border-radius: var(--border-radius);
+}
+
+.currencySelect {
+  margin: 1rem 0;
+}
+
+.currencySelect .active {
+  background: #04221d;
+  border-radius: var(--border-radius);
+}
+
+.currencyButton {
+  padding: 1dvh 2dvw;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0cb6c;
+}
+
+.currencyButton.activeCurrency {
+  background: #05483e;
+  border-radius: var(--border-radius);
+}
+
+.selectMethod {
+  padding: 1dvh 2dvw;
+  cursor: pointer;
+  border: 1px solid #f0cb6c;
+  border-radius: var(--border-radius);
+  margin: 1rem;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0cb6c;
+}
+
+.currencySelectContainer {
+  position: relative;
+  width: 250px;
+}
+
+.currencySelectContainer input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--yellow);
+  border-radius: var(--border-radius);
+  background: #05483e;
+  color: #f0cb6c;
+  font-size: 1rem;
+}
+
+.currencySelectContainer input:focus {
+  outline: none;
+  border-color: #ffcf43;
+}
+
+/* стрелочка справа */
+.currencySelectContainer::after {
+  content: "▾";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #666;
+  pointer-events: none;
+}
+
+.currencySelector {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--green);
+  border: 1px solid var(--yellow);
+  border-radius: var(--border-radius);
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  color: #f0cb6c;
+}
+
+.currencySelector li {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.currencySelector li:hover {
+  color: var(--green);
+  background: var(--yellow);
+}
+
+.amountInput::-webkit-inner-spin-button,
+.amountInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amountInput {
+  -moz-appearance: textfield;
+}
+
+.paymentLink {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.paymentLink:hover {
+  color: var(--yellow);
+}
+
+.paymentsMethod {
+  margin: 1rem;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0cb6c;
+}
+
+.methodList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.methodButton {
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  background: #04221d;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0cb6c;
+  margin: 1rem;
+}
+
+.methodButton.active {
+  border: 1px solid #ffcf43;
+  border-radius: var(--border-radius);
+}
+
+.paymentForm {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #04221d;
+  border-radius: var(--border-radius);
+}
+
+.paymentForm div {
+  margin-bottom: 1rem;
+}
+
+.paymentForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #f0cb6c;
+  font-weight: 600;
+}
+
+.paymentForm input,
+.paymentForm select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #f0cb6c;
+  border-radius: var(--border-radius);
+  background: #05483e;
+  color: #f0cb6c;
+  font-size: 1rem;
+}
+
+.paymentForm input:focus,
+.paymentForm select:focus {
+  outline: none;
+  border-color: #ffcf43;
+}
+
+.paymentForm button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(90deg, #f0cb6c 15%, #f2e5c2 50%, #f0cb6c 75%);
+  background-size: 300%;
+  animation: gradientFlow 5s ease-in-out infinite;
+  border: none;
+  color: #05483e;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.paymentForm button:hover {
+  transform: scale(1.02);
+}
+
+.paymentForm button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.alert {
+  padding: 1rem;
+  margin: 1rem 0;
+  background: #8b00008c;
+  color: #fff;
+  border-radius: var(--border-radius);
+  border: 1px solid #ff4444;
+}
+
+.deposit {
+  padding: 1rem;
+  color: #f0cb6c;
+}
+
+.withdrawal {
+  padding: 1rem;
+  color: #f0cb6c;
+}
+
+.history {
+  padding: 1rem;
+  color: #f0cb6c;
+}
+
+.Deposit {
+  background: linear-gradient(90deg, #f0cb6c 15%, #f2e5c2 50%, #f0cb6c 75%);
+  background-size: 300%;
+  animation: gradientFlow 5s ease-in-out infinite;
+  border: none;
+  color: #05483e;
+  padding: 0.5rem 2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.Deposit:hover {
+  transform: scale(1.05);
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
