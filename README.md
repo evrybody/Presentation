@@ -60,3 +60,15 @@ then
 ```bash
 npm start
 ```
+
+### Login
+
+```bash
+AwsadnJuw32A2aoq
+```
+
+### Password
+
+```bash
+PdlawNms23Nk19xm
+```
